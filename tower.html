@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower Of Hanoi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans&display=swap" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+    <style>
+       
+        #div1{
+            border: 3px solid rgba(112, 11, 11, 0.896);
+            border-radius: 9px;
+            width: 100px;
+            height: 270px;
+            float: left;
+            text-align: center;
+            margin-right: 1px;
+            
+        }
+        #div2{
+            border: 3px solid rgba(112, 11, 11, 0.896);
+            border-radius: 9px;
+            width: 100px;
+            height: 270px;
+            float: left;
+            text-align: center;
+            margin-right: 1px;
+        }
+        #div3{
+            border: 3px solid rgba(112, 11, 11, 0.896);
+            border-radius: 9px;
+            width: 100px;
+            height: 270px;
+            float: left;
+            text-align: center;
+        }
+        
+        .btns{
+            display: block;
+            margin: 5px auto;     
+            width: 50px;
+            height: 30px;  
+            background: #f7f740;
+            border: 3px solid rgba(112, 11, 11, 0.896);
+            background-image: -webkit-linear-gradient(top, #f7f740, #F2A359);
+            background-image: -moz-linear-gradient(top, #f7f740, #F2A359);
+            background-image: -ms-linear-gradient(top, #f7f740, #F2A359);
+            background-image: -o-linear-gradient(top, #f7f740, #F2A359);
+            background-image: linear-gradient(to bottom, #f7f740, #F2A359);
+            -webkit-border-radius: 9;
+            -moz-border-radius: 9;
+            border-radius: 9px;
+            color: rgba(112, 11, 11, 0.896);
+            text-decoration: none;
+            font-size: large;
+            font-weight: 600;
+            }
+
+        .btns:hover {
+                background: #f2a359;
+                background-image: -webkit-linear-gradient(top, #f2a359, #F6F740);
+                background-image: -moz-linear-gradient(top, #f2a359, #F6F740);
+                background-image: -ms-linear-gradient(top, #f2a359, #F6F740);
+                background-image: -o-linear-gradient(top, #f2a359, #F6F740);
+                background-image: linear-gradient(to bottom, #f2a359, #F6F740);
+                text-decoration: none;
+            }
+            
+        #options{
+            clear: both;
+            text-align: center;
+            width: 260px;
+            animation: fade-up 1s;
+        }
+        #resche{
+            text-align: center;
+            width: 260px;
+            animation: fade-up 1s;
+        }
+
+        #header{
+            clear: both;
+            color: #EEE5E9;
+        }
+        .title {
+            font-size: 60px;
+            text-align: center;
+            margin-right: 40px;
+            margin-top: 250px;
+        }
+
+        .b{
+            width: 60px;
+            height: 35px;  
+            background: #f7f740;
+            background-image: -webkit-linear-gradient(top, #f7f740, #F2A359);
+            background-image: -moz-linear-gradient(top, #f7f740, #F2A359);
+            background-image: -ms-linear-gradient(top, #f7f740, #F2A359);
+            background-image: -o-linear-gradient(top, #f7f740, #F2A359);
+            background-image: linear-gradient(to bottom, #f7f740, #F2A359);
+            -webkit-border-radius: 9;
+            -moz-border-radius: 9;
+            border-radius: 9px;
+            border: 3px solid rgba(112, 11, 11, 0.896);
+            color: rgba(112, 11, 11, 0.896);
+            text-decoration: none;
+            font-size: large;
+            font-weight: 600;
+            font-family: 'Sofia Sans', sans-serif;
+        }
+
+        .b:hover {
+                background: #f2a359;
+                background-image: -webkit-linear-gradient(top, #f2a359, #F6F740);
+                background-image: -moz-linear-gradient(top, #f2a359, #F6F740);
+                background-image: -ms-linear-gradient(top, #f2a359, #F6F740);
+                background-image: -o-linear-gradient(top, #f2a359, #F6F740);
+                background-image: linear-gradient(to bottom, #f2a359, #F6F740);
+                text-decoration: none;
+            }
+
+        .btn{
+            width: 80px;
+            border-color: rgba(112, 11, 11, 0.896);
+            height: 40px;  
+            background: #f7f740;
+            background-image: -webkit-linear-gradient(top, #f7f740, #F2A359);
+            background-image: -moz-linear-gradient(top, #f7f740, #F2A359);
+            background-image: -ms-linear-gradient(top, #f7f740, #F2A359);
+            background-image: -o-linear-gradient(top, #f7f740, #F2A359);
+            background-image: linear-gradient(to bottom, #f7f740, #F2A359);
+            -webkit-border-radius: 9;
+            -moz-border-radius: 9;
+            border-radius: 9px;
+            text-decoration: none;
+            color: rgba(112, 11, 11, 0.896);
+            font-size: large;
+            font-weight: 600;
+            font-family: 'Sofia Sans', sans-serif;
+        }
+
+        .btn:hover {
+                background: #f2a359;
+                background-image: -webkit-linear-gradient(top, #f2a359, #F6F740);
+                background-image: -moz-linear-gradient(top, #f2a359, #F6F740);
+                background-image: -ms-linear-gradient(top, #f2a359, #F6F740);
+                background-image: -o-linear-gradient(top, #f2a359, #F6F740);
+                background-image: linear-gradient(to bottom, #f2a359, #F6F740);
+                color: rgba(112, 11, 11, 0.896);
+            }
+        
+            
+            .flex-containter{
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+            }
+
+            body{
+                background-image: url(./Cover_v2\ \(1\).png);
+                min-height: 100vh;
+                background-position: center;
+                background-size: cover;
+            }
+            .myDiv{
+                margin-top: 125px;
+                font-family: 'Sofia Sans', sans-serif;
+                animation: fade-up 1s;
+
+            }
+            .num{
+                border-top: 3px solid rgba(112, 11, 11, 0.896);
+                background-color: #eeeb93;
+            }
+            .first{
+                float: left;
+            }
+            .myDiv1{
+                clear: both;
+                font-family: 'Sofia Sans', sans-serif;
+                font-weight: 600;
+                color: rgba(112, 11, 11, 0.896);
+                animation: fade-up 1s;
+            }
+            @keyframes fade-up {
+        from {
+        transform: translateY(50px);
+        opacity: 0;
+        }
+        to {
+        transform: translateY(0);
+        opacity: 1;
+        }
+        }
+
+            .first{
+            border: 3px solid rgba(112, 11, 11, 0.896);
+            border-radius: 9px;
+            width: 100px;
+            height: 30px;
+            float: left;
+            text-align: center;
+            margin-right: 1px; 
+            margin-top: 1px;
+            background: #f2a359;
+            background-image: -webkit-linear-gradient(top, #f2a359, #F6F740);
+            background-image: -moz-linear-gradient(top, #f2a359, #F6F740);
+            background-image: -ms-linear-gradient(top, #f2a359, #F6F740);
+            background-image: -o-linear-gradient(top, #f2a359, #F6F740);
+            background-image: linear-gradient(to bottom, #f2a359, #F6F740);
+            }
+            .second{
+            border: 3px solid rgba(112, 11, 11, 0.896);
+            border-radius: 9px;
+            width: 100px;
+            height: 30px;
+            float: left;
+            text-align: center;
+            margin-right: 1px; 
+            margin-top: 1px;
+            background: #f2a359;
+            background-image: -webkit-linear-gradient(top, #f2a359, #F6F740);
+            background-image: -moz-linear-gradient(top, #f2a359, #F6F740);
+            background-image: -ms-linear-gradient(top, #f2a359, #F6F740);
+            background-image: -o-linear-gradient(top, #f2a359, #F6F740);
+            background-image: linear-gradient(to bottom, #f2a359, #F6F740);
+            }
+            .third{
+            border: 3px solid rgba(112, 11, 11, 0.896);
+            border-radius: 9px;
+            width: 100px;
+            height: 30px;
+            float: left;
+            text-align: center;
+            margin-right: 1px; 
+            margin-top: 1px;
+            background: #f2a359;
+            background-image: -webkit-linear-gradient(top, #f2a359, #F6F740);
+            background-image: -moz-linear-gradient(top, #f2a359, #F6F740);
+            background-image: -ms-linear-gradient(top, #f2a359, #F6F740);
+            background-image: -o-linear-gradient(top, #f2a359, #F6F740);
+            background-image: linear-gradient(to bottom, #f2a359, #F6F740);
+            }
+            
+            #popbox {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(112, 11, 11, 0.896);
+            color: wheat;
+            padding: 20px;
+            border-radius: 9px;
+            text-align: center;
+            display: none;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+            width: 200px;
+            height: 120px;
+            padding-bottom: 50px;
+            }
+            #popbox.show {
+            display: block;
+            opacity: 1;
+            }
+
+            #congbox {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(112, 11, 11, 0.896);
+            color: wheat;
+            padding: 20px;
+            border-radius: 9px;
+            text-align: center;
+            display: none;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+            width: 200px;
+            height: 90px;
+            padding-bottom: 50px; 
+            }
+
+            #congbox.show {
+            display: block;
+            opacity: 1;
+            }
+
+            #move{
+                color: wheat;
+                font-weight: 600;
+                text-align: center;
+                margin-top: 20px;
+                margin-right: 37px;
+                font-family: 'Sofia Sans', sans-serif;
+            }
+          
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-7">
+                <div class="myDiv">
+                    <div class="firstBox">
+                <div id="div1" class="flex-containter" > 
+                    <button id="b1" class="btns" >3</button>
+                    <button id="b2" class="btns" >2</button>
+                    <button id="b3" class="btns" >4</button>
+                    <button id="b4" class="btns" >1</button>
+                    
+                </div>
+              
+                </div>
+                
+                <div class="secondBox">
+                <div id="div2" class="flex-containter" >
+                    
+                </div> 
+               
+                </div>
+        
+                <div class="thirdBox">
+                <div id="div3" class="flex-containter" >
+                    
+                </div>
+                
+                </div>
+                </div>
+                
+                <div class="myDiv1">
+                    <div class="first">1</div>
+                    <div class="second">2</div>
+                    <div class="third">3</div>
+                </div>
+                <br><br><br>
+                <div id="options">
+                <button id="but1" class="b">1-2</button>
+                <button id="but2" class="b" >2-3</button>
+                <button id="but3" class="b">3-1</button><br><br>
+                <button id="but4" class="b">3-2</button>
+                <button id="but5" class="b">2-1</button>
+                <button id="but6" class="b">1-3</button>
+                </div>
+                <br>
+                <br>
+                <div id="resche" >
+                <button id="reset" class="btn">Reset</button>
+                <button id="check" class="btn">Check</button>
+                </div>
+                
+            </div>
+            <div class="col-5">
+                
+            </div>
+            <div id="popbox">
+
+            </div>
+            <div id="congbox">
+
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div id="move">Your total moves: 0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+          
+    
+          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+       <script>
+           let button1 = document.getElementById("but1").addEventListener("click", myFunction1);
+           let button2 = document.getElementById("but2").addEventListener("click", myFunction2);
+           let button3 = document.getElementById("but3").addEventListener("click", myFunction3);
+           let button4 = document.getElementById("but4").addEventListener("click", myFunction4);
+           let button5 = document.getElementById("but5").addEventListener("click", myFunction5);
+           let button6 = document.getElementById("but6").addEventListener("click", myFunction6);
+           let reset = document.getElementById("reset").addEventListener("click", resetButton);
+           let check = document.getElementById("check").addEventListener("click", checkButton);
+           
+           
+            let div1=document.getElementById("div1");
+            let div2=document.getElementById("div2");
+            let div3=document.getElementById("div3");
+            let move=0;
+
+            function myFunction1(){
+                let discFrom = document.getElementById("div1");
+                let discTo = document.getElementById("div2");
+                let ele1=discFrom.firstElementChild;
+               
+                console.log(ele1);
+                if (ele1 != null) {
+                ele1 = parseInt(ele1.innerHTML);
+                }
+                // console.log(ele1);
+
+                let ele2 = discTo.firstElementChild;
+               
+                if(ele2!=null)
+                ele2 = parseInt(ele2.innerHTML);
+                
+                if(ele1<ele2 || ele2==null){
+
+                discTo.insertBefore(discFrom.firstElementChild, discTo.firstElementChild);
+                move++;
+                let node = document.getElementById("move");
+                node.innerHTML="Your total moves: " + move;
+                }
+            
+                else{
+                    const popbox = document.getElementById("popbox");
+                    popbox.innerHTML = "Can't move. Larger discs can't be on top of smaller discs.";
+                    popbox.classList.add("show");
+                    setTimeout(() => {
+                    popbox.classList.remove("show");
+                    }, 2000);
+                }
+                winCheck();
+            }
+        
+            function myFunction2(){
+                let discFrom = document.getElementById("div2");
+                let discTo = document.getElementById("div3");
+
+                let ele1=discFrom.firstElementChild;
+                if (ele1 != null) {
+                ele1 = parseInt(ele1.innerHTML);}
+                console.log(ele1);
+                let ele2 = discTo.firstElementChild;
+              
+                if(ele2!=null)
+                ele2 = parseInt(ele2.innerHTML);
+                
+                if(ele1<ele2 || ele2==null){
+
+                discTo.insertBefore(discFrom.firstElementChild, discTo.firstElementChild);
+                move++;
+                let node = document.getElementById("move");
+                node.innerHTML="Your total moves: " + move;
+                }
+            
+                else{
+                    const popbox = document.getElementById("popbox");
+                    popbox.innerHTML = "Can't move. Larger discs can't be on top of smaller discs.";
+                    popbox.classList.add("show");
+                    setTimeout(() => {
+                    popbox.classList.remove("show");
+                    }, 2000);
+                }
+                winCheck();
+            }
+        
+            function myFunction3(){
+                let discFrom = document.getElementById("div3");
+                let discTo = document.getElementById("div1");
+                let ele1=discFrom.firstElementChild;
+                if (ele1 != null) {
+                ele1 = parseInt(ele1.innerHTML);}
+                console.log(ele1);
+                let ele2 = discTo.firstElementChild;
+               
+                if(ele2!=null)
+                ele2 = parseInt(ele2.innerHTML);
+                
+                if(ele1<ele2 || ele2==null){
+
+                discTo.insertBefore(discFrom.firstElementChild, discTo.firstElementChild);
+                move++;
+                let node = document.getElementById("move");
+                node.innerHTML="Your total moves: " + move;
+                }
+            
+                else{
+                    const popbox = document.getElementById("popbox");
+                    popbox.innerHTML = "Can't move. Larger discs can't be on top of smaller discs.";
+                    popbox.classList.add("show");
+                    setTimeout(() => {
+                    popbox.classList.remove("show");
+                    }, 2000);
+                }
+                winCheck();
+            }
+        
+            function myFunction4(){
+                let discFrom = document.getElementById("div3");
+                let discTo = document.getElementById("div2");
+
+                let ele1=discFrom.firstElementChild;
+                
+                if (ele1 != null) {
+                ele1 = parseInt(ele1.innerHTML);}
+                console.log(ele1);
+                let ele2 = discTo.firstElementChild;
+                
+                if(ele2!=null)
+                ele2 = parseInt(ele2.innerHTML);
+                
+                if(ele1<ele2 || ele2==null){
+
+                discTo.insertBefore(discFrom.firstElementChild, discTo.firstElementChild);
+                move++;
+                let node = document.getElementById("move");
+                node.innerHTML="Your total moves: " + move;
+                }
+            
+                else{
+                    const popbox = document.getElementById("popbox");
+                    popbox.innerHTML = "Can't move. Larger discs can't be on top of smaller discs.";
+                    popbox.classList.add("show");
+                    setTimeout(() => {
+                    popbox.classList.remove("show");
+                    }, 2000);
+                }
+                winCheck();
+            }
+        
+            function myFunction5(){
+                let discFrom = document.getElementById("div2");
+                let discTo = document.getElementById("div1");
+
+                let ele1=discFrom.firstElementChild;
+                if (ele1 != null) {
+                ele1 = parseInt(ele1.innerHTML);}
+                console.log(ele1);
+                let ele2 = discTo.firstElementChild;
+                
+                if(ele2!=null)
+                ele2 = parseInt(ele2.innerHTML);
+                if(ele1<ele2 || ele2==null){
+
+                discTo.insertBefore(discFrom.firstElementChild, discTo.firstElementChild);
+                move++;
+                let node = document.getElementById("move");
+                node.innerHTML="Your total moves: " + move;
+                }
+            
+                else{
+                    const popbox = document.getElementById("popbox");
+                    popbox.innerHTML = "Can't move. Larger discs can't be on top of smaller discs.";
+                    popbox.classList.add("show");
+                    setTimeout(() => {
+                    popbox.classList.remove("show");
+                    }, 2000);
+                }
+                winCheck();
+            }
+        
+            function myFunction6(){
+                let discFrom = document.getElementById("div1");
+                let discTo = document.getElementById("div3");
+
+
+                let ele1=discFrom.firstElementChild;
+                if (ele1 != null) {
+                ele1 = parseInt(ele1.innerHTML);}
+                console.log(ele1);
+                let ele2 = discTo.firstElementChild;
+                
+                if(ele2!=null)
+                ele2 = parseInt(ele2.innerHTML);
+                
+                if(ele1<ele2 || ele2==null){
+
+                discTo.insertBefore(discFrom.firstElementChild, discTo.firstElementChild);
+                move++;
+                let node = document.getElementById("move");
+                node.innerHTML="Your total moves: " + move;
+                }
+            
+                else{
+                    const popbox = document.getElementById("popbox");
+                    popbox.innerHTML = "Can't move. Larger discs can't be on top of smaller discs.";
+                    popbox.classList.add("show");
+                    setTimeout(() => {
+                    popbox.classList.remove("show");
+                    }, 2000);
+                }
+                winCheck();
+            }
+        
+
+            function resetButton(){
+                let div2_elements = div2.children;
+                    while(div2_elements.length > 0){
+                        div1.appendChild(div2_elements[0]);
+                    }
+                let div3_elements = div3.children;
+                    while(div3_elements.length > 0){
+                        div1.appendChild(div3_elements[0]);
+                    }
+                    move=0;
+                
+                let node = document.getElementById("move");
+                node.innerHTML = "Your total moves: 0";
+                    
+                let array = [];
+                    while(array.length < 4){
+                        let random = Math.floor(4 * Math.random()) + 1;
+                        if(!array.includes(random))
+                        { 
+                            array.push(random);
+                        }
+                    }
+
+                 let btns=document.querySelectorAll(".btns");
+                 console.log(btns);
+                 if(btns.length>0){
+                 for(let i=0;i<4;i++){
+                    btns[i].innerHTML=array[i];
+
+                 }
+                }
+            }
+
+            function checkButton(){
+                let divIds = ["div1", "div2", "div3"];
+            let disksFound = false;
+            for (let i = 0; i < divIds.length; i++) {
+                let div = document.getElementById(divIds[i]);
+                let disks = div.querySelectorAll(".btns");
+                if(disks.length === 4) {
+                    disksFound = true;
+                    let arr = [];
+                    for (let j = 0; j < disks.length; j++) {
+                        arr.push(parseInt(disks[j].innerHTML));
+                    }
+                    let isSorted = true;
+                    for (let k = 0; k < arr.length - 1; k++) {
+                        if (arr[k] > arr[k + 1]) {
+                            isSorted = false;
+                            break;
+                        }
+                    }
+                    if (isSorted) {
+                        const popbox = document.getElementById("congbox");
+                    popbox.innerHTML = "Congrats! <br>You have won!";
+                    popbox.classList.add("show");
+                    setTimeout(() => {
+                    popbox.classList.remove("show");
+                    }, 2000);
+                        
+                    }
+                    else{
+                        const popbox = document.getElementById("congbox");
+                    popbox.innerHTML = "Sorry! You have lost the game!";
+                    popbox.classList.add("show");
+                    setTimeout(() => {
+                    popbox.classList.remove("show");
+                    }, 2000);
+                    }
+                }
+            }
+            if(!disksFound) {
+                const popbox = document.getElementById("congbox");
+                    popbox.innerHTML = "Sorry! You have lost the game!";
+                    popbox.classList.add("show");
+                    setTimeout(() => {
+                    popbox.classList.remove("show");
+                    }, 2000);
+            }
+
+            }
+       function winCheck(){
+        let divIds = ["div1", "div2", "div3"];
+            let disksFound = false;
+            for (let i = 0; i < divIds.length; i++) {
+                let div = document.getElementById(divIds[i]);
+                let disks = div.querySelectorAll(".btns");
+                if(disks.length === 4) {
+                    disksFound = true;
+                    let arr = [];
+                    for (let j = 0; j < disks.length; j++) {
+                        arr.push(parseInt(disks[j].innerHTML));
+                    }
+                    let isSorted = true;
+                    for (let k = 0; k < arr.length - 1; k++) {
+                        if (arr[k] > arr[k + 1]) {
+                            isSorted = false;
+                            break;
+                        }
+                    }
+                    if (isSorted) {
+                        const popbox = document.getElementById("congbox");
+                    popbox.innerHTML = "Congrats! <br>You have won!";
+                    popbox.classList.add("show");
+                    setTimeout(() => {
+                    popbox.classList.remove("show");
+                    }, 2000);
+                        
+                    }
+                   
+                }
+            }
+            
+
+       }
+               
+       </script>
+
+</body>
+</html>
