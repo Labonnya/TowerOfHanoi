@@ -1,5 +1,5 @@
 # TowerOfHanoi
-Tower of Hanoi game made by html, css, bootstrap
+To play the tower of hanoi game, you have to sort the disks to an ascending order in any of the box. By clicking the options like 1->2, you can move your disk from box 1 to box 2. By pressing the check button, you can check your result.
 
 
 ![Screenshot (676)](https://github.com/Labonnya/TowerOfHanoi/assets/75426550/e386298e-e253-42ea-a183-41679ed7df64)
